@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>Demo App</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.4/underscore-min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+        <script src="js/chart.js"></script>
+        <script src="js/util.js"></script>
+        <script src="js/datatable.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    {{> page/chart}}
+                </div>
+                <div class="col-12 mt-5">
+                    {{> page/table}}
+                </div>
+            </div>
+        </div>
+        <script>
+            const _data = {{{json data}}};
+            const datasets = congigureChartData(_data);
+            const labels = getLabels('2020-11-1', '2021-11-30');
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const config = getConfig()
+            const myChart = new Chart(ctx, config);
+        </script>
+    </body>
+</html>
